@@ -44,8 +44,15 @@ nav ul {
 .navigationBar ul li {
   padding: 15px;
   align-items: center;
-  color: #959698;
+  color: hsl(220, 14%, 75%);
+  font-size: large;
+  font-weight: bold;
 }
+.menu {
+  padding: 0 10px;
+  display: none;
+}
+
 
 /* main body area */
 .contents section {
@@ -94,7 +101,6 @@ nav ul {
 .thumbnail img {
   width: 100%;
   height: 100%;
-  /* object-fit: fill; */
   border-radius: 10px;
 }
 
@@ -105,8 +111,8 @@ nav ul {
   padding: 50px 150px;
 }
 .heading5 {
-  font-size: small;
-  font-weight: 600;
+  font-size: large;
+  font-weight: bolder;
   color: hsl(26, 100%, 55%);
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -126,6 +132,7 @@ nav ul {
   color: hsl(220, 14%, 75%);
   padding: 30px 05px 30px 30px;
   line-height: 1.8;
+  font-weight: bold;
 }
 .discount {
   color: hsl(26, 100%, 55%);
@@ -194,7 +201,42 @@ nav ul {
   font-weight: bolder;
 }
 .attribution {
-  display: flex;
-  justify-content: center;
-  font-size: xx-small;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* Mobile settings */
+
+@media all and (max-width: 375px) {
+  .navigationBar {
+    width: 100%;
+  }
+  .menu {
+    display: block;
+  }
+  .menu-logo img {
+    padding: 0 4px;
+
+  }
+  .menu-logo {
+    display: flex;
+  }
+
+  .list {
+    display: none;
+  }
+  .cart-avatar {
+    width: auto;
+  }
+  .cart-avatar .cart {
+    width: 15px;
+    height: 15px;
+  }
+  .cart-avatar .avatar {
+    height: 25px;
+    width: 25px;
+  }
 }
