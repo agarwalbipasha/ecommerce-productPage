@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;400;500;600;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
 body {
   width: 100%;
+  font-family: "Kumbh Sans", sans-serif;
 }
 
 /* Styling the navigation bar */
@@ -45,7 +46,7 @@ nav ul {
   padding: 15px;
   align-items: center;
   color: hsl(220, 14%, 75%);
-  font-size: large;
+  font-size: normal;
   font-weight: bold;
 }
 .menu {
@@ -114,7 +115,7 @@ nav ul {
   padding: 50px 150px;
 }
 .heading5 {
-  font-size: large;
+  font-size: small;
   font-weight: bolder;
   color: hsl(26, 100%, 55%);
   text-transform: uppercase;
@@ -324,7 +325,5 @@ nav ul {
     position: absolute;
     /* display: none; */
     padding: 350px 0;
-    
   }
-
 }
