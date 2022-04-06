@@ -25,7 +25,7 @@ nav ul {
   display: flex;
 }
 nav ul {
-  padding: 20px;
+  padding: 20px 20px 0 20px;
 }
 .navigationBar {
   display: flex;
@@ -46,7 +46,21 @@ nav ul {
   width: 20px;
   height: 20px;
   margin: 0 10px;
+  position: relative;
+  display: inline-block;
+
 }
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: auto;
+  z-index: 1;
+  margin: 22px 0;
+  font-weight: bold;
+  box-shadow: 0px 8px 16px 0px rgba(131, 122, 122, 0.2);
+}
+
 .cart-avatar .avatar {
   width: 40px;
   height: 40px;
@@ -182,6 +196,7 @@ nav ul {
 }
 .count-box button {
   border: none;
+  background-color: #e9e9ed;
 }
 .buttons-section {
   display: flex;
@@ -227,6 +242,36 @@ nav ul {
 .attribution a {
   color: hsl(228, 45%, 44%);
 }
+
+/* active states */
+
+.navigationBar .list:hover {
+  cursor: pointer;
+  border-bottom: 5px solid hsl(26, 100%, 55%);
+}
+.thumbnail:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.count-box button {
+  cursor: pointer;
+}
+.button-cart:hover {
+  cursor: pointer;
+  background-color: hsl(26, 90%, 65%);
+}
+.avatar:hover {
+  cursor: pointer;
+  border: 1.5px solid hsl(26, 100%, 55%);
+  border-radius: 70px;
+}
+.cart:hover {
+  cursor: pointer;  
+}
+.cart:hover .dropdown {
+  display: block;
+}
+
 
 /* Mobile settings */
 
@@ -339,15 +384,13 @@ nav ul {
     font-weight: bold;
   }
   .button-cart {
-    /* margin: 0 20px; */
     width: 100%;
   }
-  .add-to-cart { 
+  .add-to-cart {
     margin: 0 10px;
-    width: 70%;   
+    width: 70%;
     border: 0;
     box-shadow: 5px 10px 8px hsl(25, 100%, 94%);
-    
   }
   .add-to-cart span {
     font-weight: 500;
