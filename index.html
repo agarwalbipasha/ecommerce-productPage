@@ -23,14 +23,19 @@
         <li>
           <div class="menu-logo">
             <div id="myNav" class="overlay">
-              <img src="./images/icon-close.svg" alt="close" class="closebtn" onclick="closeNav()" />
+              <img
+                src="./images/icon-close.svg"
+                alt="close"
+                class="closebtn"
+                onclick="closeNav()"
+              />
               <div class="overlay-content">
-                  <a href="#">Collections</a>
-                  <a href="#">Men</a>
-                  <a href="#">Women</a>
-                  <a href="#">About</a>
-                  <a href="#">Contact</a>
-                </div>
+                <a href="#">Collections</a>
+                <a href="#">Men</a>
+                <a href="#">Women</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+              </div>
             </div>
             <span onclick="openNav()"
               ><img src="./images/icon-menu.svg" alt="Menu bar" class="menu"
@@ -71,7 +76,52 @@
             <div class="next">
               <img src="./images/icon-next.svg" alt="Next" />
             </div>
-            <img src="./images/image-product-1.jpg" alt="Product image" />
+            <img src="./images/image-product-1.jpg" alt="Product image" class="activeImage"/>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <span class="close"><img src="./images/icon-close.svg" alt="close" /> </span>
+                <div class="modal-product1">
+                  <div class="modal-previous">
+                    <img src="./images/icon-previous.svg" alt="Previous" />
+                  </div>
+                  <div class="modal-image">
+                  <img src="./images/image-product-1.jpg" alt="Product 1" />
+                </div>
+                  <div class="modal-next">
+                    <img src="./images/icon-next.svg" alt="Next" />
+                  </div>
+
+                </div>
+                <div class="modal-thumbnail">
+                  <div class="thumbnail image1 active-div">
+                    <img
+                      src="./images/image-product-1-thumbnail.jpg"
+                      alt="Thumbnail of product 1"
+                      class="active"
+                    />
+                  </div>
+                  <div class="thumbnail">
+                    <img
+                      src="./images/image-product-2-thumbnail.jpg"
+                      alt="Thumbnail of product 2"
+                    />
+                  </div>
+                  <div class="thumbnail">
+                    <img
+                      src="./images/image-product-3-thumbnail.jpg"
+                      alt="Thumbnail of product 3"
+                    />
+                  </div>
+                  <div class="thumbnail image4">
+                    <img
+                      src="./images/image-product-4-thumbnail.jpg"
+                      alt="Thumbnail of product 4"
+                    />
+                  </div> 
+              </div>
+                </div>
+              
           </div>
           <section>
             <div class="thumbnail image1 active-div">
@@ -147,10 +197,27 @@
   </body>
   <script>
     function openNav() {
-      document.getElementById("myNav").style.width = '100%';  
+      document.getElementById("myNav").style.width = "100%";
     }
     function closeNav() {
-      document.getElementById("myNav").style.width = '0%';
+      document.getElementById("myNav").style.width = "0%";
+    }
+    var modal = document.getElementById("myModal");
+    var activeImage = document.getElementsByClassName("activeImage");
+    var span = document.getElementsByClassName("close")[0];
+    activeImage.onclick = function () {
+      console.log("inside activeImage")
+      modal.style.display = "block";      
+    }
+    span.onclick = function () {
+      console.log("inside span")
+      modal.style.display = "none";
+    }
+    window.onclick = function () {
+      if(event.target == modal) {
+        console.log("inside window")
+        modal.style.display = "none";
+      }      
     }
   </script>
 </html>
