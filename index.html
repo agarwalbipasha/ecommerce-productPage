@@ -22,7 +22,19 @@
       <ul>
         <li>
           <div class="menu-logo">
-            <img src="./images/icon-menu.svg" alt="Menu bar" class="menu" />
+            <div id="myNav" class="overlay">
+              <img src="./images/icon-close.svg" alt="close" class="closebtn" onclick="closeNav()" />
+              <div class="overlay-content">
+                  <a href="#">Collections</a>
+                  <a href="#">Men</a>
+                  <a href="#">Women</a>
+                  <a href="#">About</a>
+                  <a href="#">Contact</a>
+                </div>
+            </div>
+            <span onclick="openNav()"
+              ><img src="./images/icon-menu.svg" alt="Menu bar" class="menu"
+            /></span>
             <img src="./images/logo.svg" alt="Sneakers logo" />
           </div>
         </li>
@@ -33,8 +45,16 @@
         <li class="list">Contact</li>
       </ul>
       <div class="cart-avatar">
-        <div class="cart"><img src="./images/icon-cart.svg" alt="Cart" />
-        <div class="dropdown">Cart</div></div>
+        <div class="cart">
+          <img src="./images/icon-cart.svg" alt="Cart" />
+          <select class="dropdown">
+            <optgroup label="dropdown-cart">Cart</optgroup>
+            <!-- <option><hr /></option> -->
+            <!-- <optgroup label="dropdown-list"> -->
+            <option>Your cart is empty</option>
+            <!-- </optgroup> -->
+          </select>
+        </div>
         <div class="avatar">
           <img type="image/png" src="./images/image-avatar.png" alt="Avatar" />
         </div>
@@ -125,4 +145,12 @@
       >. Coded by <a href="#"> Bipasha Agarwal</a>.
     </div>
   </body>
+  <script>
+    function openNav() {
+      document.getElementById("myNav").style.width = '100%';  
+    }
+    function closeNav() {
+      document.getElementById("myNav").style.width = '0%';
+    }
+  </script>
 </html>
