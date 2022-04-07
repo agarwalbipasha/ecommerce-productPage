@@ -22,6 +22,8 @@
       <ul>
         <li>
           <div class="menu-logo">
+            <div id="overlay-back"></div>
+            <div class="overlay-background">
             <div id="myNav" class="overlay">
               <img
                 src="./images/icon-close.svg"
@@ -40,6 +42,7 @@
             <span onclick="openNav()"
               ><img src="./images/icon-menu.svg" alt="Menu bar" class="menu"
             /></span>
+          </div>
             <img src="./images/logo.svg" alt="Sneakers logo" />
           </div>
         </li>
@@ -80,7 +83,7 @@
             <!-- The Modal -->
             <div id="myModal" class="modal">
               <div class="modal-content">
-                <span class="close"><img src="./images/icon-close.svg" alt="close" /> </span>
+                <span class="close"><img src="./images/icon-close.svg" alt="close" class="close-svg"/> </span>
                 <div class="modal-product1">
                   <div class="modal-previous">
                     <img src="./images/icon-previous.svg" alt="Previous" />
@@ -197,13 +200,15 @@
   </body>
   <script>
     function openNav() {
-      document.getElementById("myNav").style.width = "100%";
+      document.getElementById("overlay-back").style.display = "block";
+      document.getElementById("myNav").style.width = "75%";
     }
     function closeNav() {
+      document.getElementById("overlay-back").style.display = "none";
       document.getElementById("myNav").style.width = "0%";
     }
     var modal = document.getElementById("myModal");
-    var activeImage = document.getElementsByClassName("activeImage");
+    var activeImage = document.getElementsByClassName("activeImage")[0];
     var span = document.getElementsByClassName("close")[0];
     activeImage.onclick = function () {
       console.log("inside activeImage")
