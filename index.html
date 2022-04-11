@@ -61,7 +61,7 @@
         </div>
       </div>
     </nav>
-    <div onmouseover="onMouse(event)" onmouseout="overMouse(event)" class="cart-popup">
+    <div id="cart-popup">
       <h6 class="cart-header">Cart</h6>
       <p class="empty-cart-content">Your cart is empty.</p>
     </div>
@@ -210,43 +210,26 @@
     var activeImage = document.getElementsByClassName("activeImage")[0];
     var span = document.getElementsByClassName("close")[0];
     activeImage.onclick = function () {
-      // console.log("inside activeImage")
       modal.style.display = "block";      
     }
     span.onclick = function () {
-      // console.log("inside span")
       modal.style.display = "none";
     }
     window.onclick = function () {
       if(event.target == modal) {
-        // console.log("inside window")
         modal.style.display = "none";
       }      
     }
 
-    var emptyCart = document.getElementsByClassName("cart-popup")[0];
-    // console.log(emptyCart);
-    // function emptyCartPopUp (event) {
-    //   event.target.style.display = "block";
-    // }
-    // emptyCart.addEventListener('mouseover', emptyCartPopUp(event));
-    // emptyCart.onmouseover = function () {
-    //   console.log("inside mouseover");
-    //   emptyCart.style.display = "block";
-    // }
-    function onMouse(event) {
-      console.log("inside mouseover");
-      alert("Hi");
-      // event.target.style.visibility = "visible";
-      event.target.style.display = "block";
+    var cart = document.getElementsByClassName("cart")[0];
+    var emptyCart = document.getElementById("cart-popup");
+    cart.onclick = function () {
+      if (emptyCart.style.display == "block") {
+        emptyCart.style.display = "none";
+      } else {
+        emptyCart.style.display = "block";
+      }
     }
-    function overMouse(event) {
-      // event.target.style.visibility = "hidden";
-      event.target.style.display = "none";
-    }
-    // emptyCart.onmouseout = function () {
-    //   emptyCart.style.display = "none";
-    // }
 
 
 
