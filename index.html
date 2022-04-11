@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" type="text/css" href="reset.css" />
     <link rel="stylesheet" href="styles.css" />
-  </head>
+    </head>
   <body>
     <nav class="navigationBar">
       <ul>
@@ -53,21 +53,18 @@
         <li class="list">Contact</li>
       </ul>
       <div class="cart-avatar">
-        <div class="cart">
+        <div class="cart" title="Cart" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Your cart is empty">
           <img src="./images/icon-cart.svg" alt="Cart" />
-          <select class="dropdown">
-            <optgroup label="dropdown-cart">Cart</optgroup>
-            <!-- <option><hr /></option> -->
-            <!-- <optgroup label="dropdown-list"> -->
-            <option>Your cart is empty</option>
-            <!-- </optgroup> -->
-          </select>
-        </div>
+          </div>
         <div class="avatar">
           <img type="image/png" src="./images/image-avatar.png" alt="Avatar" />
         </div>
       </div>
     </nav>
+    <div onmouseover="onMouse(event)" onmouseout="overMouse(event)" class="cart-popup">
+      <h6 class="cart-header">Cart</h6>
+      <p class="empty-cart-content">Your cart is empty.</p>
+    </div>
 
     <main class="contents">
       <section>
@@ -155,6 +152,8 @@
           </section>
         </aside>
         <aside class="description">
+          
+          
           <h5 class="heading5">Sneaker Company</h5>
           <h1 class="heading2">Fall Limited Edition Sneakers</h1>
           <p class="para">
@@ -211,18 +210,45 @@
     var activeImage = document.getElementsByClassName("activeImage")[0];
     var span = document.getElementsByClassName("close")[0];
     activeImage.onclick = function () {
-      console.log("inside activeImage")
+      // console.log("inside activeImage")
       modal.style.display = "block";      
     }
     span.onclick = function () {
-      console.log("inside span")
+      // console.log("inside span")
       modal.style.display = "none";
     }
     window.onclick = function () {
       if(event.target == modal) {
-        console.log("inside window")
+        // console.log("inside window")
         modal.style.display = "none";
       }      
     }
+
+    var emptyCart = document.getElementsByClassName("cart-popup")[0];
+    // console.log(emptyCart);
+    // function emptyCartPopUp (event) {
+    //   event.target.style.display = "block";
+    // }
+    // emptyCart.addEventListener('mouseover', emptyCartPopUp(event));
+    // emptyCart.onmouseover = function () {
+    //   console.log("inside mouseover");
+    //   emptyCart.style.display = "block";
+    // }
+    function onMouse(event) {
+      console.log("inside mouseover");
+      alert("Hi");
+      // event.target.style.visibility = "visible";
+      event.target.style.display = "block";
+    }
+    function overMouse(event) {
+      // event.target.style.visibility = "hidden";
+      event.target.style.display = "none";
+    }
+    // emptyCart.onmouseout = function () {
+    //   emptyCart.style.display = "none";
+    // }
+
+
+
   </script>
 </html>
