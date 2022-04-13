@@ -170,11 +170,11 @@
           </div>
           <div class="buttons-section">
             <div class="count-box">
-              <button>
+              <button class="decrease">
                 <img src="./images/icon-minus.svg" alt="Reduce sign" />
               </button>
               <div>0</div>
-              <button>
+              <button class="increase">
                 <img src="./images/icon-plus.svg" alt="Increace sign" />
               </button>
             </div>
@@ -221,6 +221,7 @@
       }      
     }
 
+    // display empty cart
     var cart = document.getElementsByClassName("cart")[0];
     var emptyCart = document.getElementById("cart-popup");
     cart.onclick = function () {
@@ -230,6 +231,31 @@
         emptyCart.style.display = "block";
       }
     }
+
+    // calculate item quantity
+    var quantityInCountBox = document.getElementsByClassName("count-box")[0];
+    var quantity = quantityInCountBox.getElementsByTagName("div")[0];
+    var quantityValue = Number(quantity.innerText);
+    console.log(typeof quantityValue);
+    var decreaseQuantity = function () {
+      event.preventDefault();
+      if (quantityValue == 0) {
+        quantity.innerText = quantityValue;
+      } else {
+        quantityValue -= 1;
+        quantity.innerText = quantityValue;
+      }
+    }
+    function increaseQuantity (event) {
+      event.preventDefault();
+      quantityValue += 1;
+      quantity.innerText = quantityValue;
+    }
+
+    var minusButton = document.querySelector(".decrease");
+    minusButton.addEventListener('click', decreaseQuantity);
+    var addButton = document.querySelector(".increase");
+    addButton.addEventListener('click',increaseQuantity);
 
 
 
