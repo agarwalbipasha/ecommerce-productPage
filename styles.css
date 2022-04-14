@@ -217,6 +217,40 @@ nav ul {
   font-weight: bold;
   font-size: 12px;
 }
+table {
+  display: none;
+  width: 100%;
+}
+tr {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+  color: hsl(220, 14%, 75%);
+  font-size: 11px;
+}
+tr span {
+  color: hsl(220, 13%, 13%);
+}
+.total {
+  font-weight: bolder;
+}
+#delete-item:hover {
+  cursor: pointer;
+}
+#checkout {
+  display: none;
+  margin: 15px 20px;
+  background-color: hsl(26, 100%, 55%);
+  color: hsl(0, 0%, 100%);
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  width: 15vw;
+  padding: 10px;
+}
+#checkout:hover {
+  cursor: pointer;
+}
 .heading5 {
   font-size: small;
   font-weight: bolder;
@@ -591,5 +625,10 @@ nav ul {
   }
   .empty-cart-content {
     padding: 100px;
+  }
+  #checkout {
+    width: 70vw;
+    padding: 15px;
+    margin: 20px auto;
   }
 }

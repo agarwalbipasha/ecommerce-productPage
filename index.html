@@ -64,6 +64,10 @@
     <div id="cart-popup">
       <h6 class="cart-header">Cart</h6>
       <p class="empty-cart-content">Your cart is empty.</p>
+      <table id="cart-content">
+        <tbody></tbody>
+      </table>
+      <button id="checkout">Checkout</button>
     </div>
 
     <main class="contents">
@@ -76,7 +80,9 @@
             <div class="next">
               <img src="./images/icon-next.svg" alt="Next" />
             </div>
-            <img src="./images/image-product-1.jpg" alt="Product image" class="activeImage"/>
+            <div  class="activeImage">
+            <img src="./images/image-product-1.jpg" alt="Product image"/>
+          </div>
             <!-- The Modal -->
             <div id="myModal" class="modal">
               <div class="modal-content">
@@ -151,9 +157,7 @@
             </div>
           </section>
         </aside>
-        <aside class="description">
-          
-          
+        <aside class="description">  
           <h5 class="heading5">Sneaker Company</h5>
           <h1 class="heading2">Fall Limited Edition Sneakers</h1>
           <p class="para">
@@ -183,7 +187,7 @@
                 <div class="image">
                   <img src="./images/icon-cart.svg" alt="Cart" />
                 </div>
-                <span> Add to cart </span>
+                <span id="add-cart"> Add to cart </span>
               </button>
             </div>
           </div>
@@ -198,6 +202,8 @@
     </div>
   </body>
   <script>
+
+    //Opening menu in the mobile version
     function openNav() {
       document.getElementById("overlay-back").style.display = "block";
       document.getElementById("myNav").style.width = "75%";
@@ -206,6 +212,8 @@
       document.getElementById("overlay-back").style.display = "none";
       document.getElementById("myNav").style.width = "0%";
     }
+
+    //Modal funtionality
     var modal = document.getElementById("myModal");
     var activeImage = document.getElementsByClassName("activeImage")[0];
     var span = document.getElementsByClassName("close")[0];
@@ -236,8 +244,7 @@
     var quantityInCountBox = document.getElementsByClassName("count-box")[0];
     var quantity = quantityInCountBox.getElementsByTagName("div")[0];
     var quantityValue = Number(quantity.innerText);
-    console.log(typeof quantityValue);
-    var decreaseQuantity = function () {
+    function decreaseQuantity(event) {
       event.preventDefault();
       if (quantityValue == 0) {
         quantity.innerText = quantityValue;
@@ -256,6 +263,66 @@
     minusButton.addEventListener('click', decreaseQuantity);
     var addButton = document.querySelector(".increase");
     addButton.addEventListener('click',increaseQuantity);
+
+    //Add to cart functionality
+    const cartContent = document.querySelector(".button-cart");
+    // console.log(cartContent);
+    var shoppingCartContent = document.querySelector('#cart-content tbody');
+    // console.log(shoppingCartContent);
+    loadEventListeners();
+    function loadEventListeners() {
+      cartContent.addEventListener('click', buyItem);
+    }
+    function buyItem(event) {
+      event.preventDefault();if(event.target.classList.contains("button-cart")) {
+        const cartElement = document.querySelector('main');
+        getItemInfo(cartElement);
+      }
+    }
+
+    function getItemInfo(cartElement) {
+      // console.log(cartElement.querySelector('.activeImage img').src);
+      let price = cartElement.querySelector('.heading-price').innerText;
+      let quantity = quantityValue;
+      let totalPrice = '$' + (Number(price.split("$")[1]) * quantity).toString()
+      const itemInfo = {
+        image: cartElement.querySelector('.activeImage img').src,
+        title: cartElement.querySelector('.heading2').innerText,
+        price: price,
+        quantity: quantity,
+        totalPrice: totalPrice
+      }
+      console.log(itemInfo);
+      addToCart(itemInfo);
+    }
+    
+    function addToCart(item) {
+      var emptyCartContent = document.querySelector('.empty-cart-content');
+      emptyCartContent.style.display = 'none';
+      var tableContent = document.querySelector('table');
+      tableContent.style.display = 'block';
+      var checkoutButton = document.querySelector("#checkout");
+      checkoutButton.style.display = 'block';
+      var newRow = tableContent.insertRow();
+      newRow.style.width = "100%";
+      var cell1 = newRow.insertCell(0);
+      cell1.innerHTML = '<img src="./images/image-product-1-thumbnail.jpg" alt="product image"  style="width: 30px; border-radius: 10px; padding: 5px"/>';
+      var cell2 = newRow.insertCell(1);
+      cell2.innerHTML = `${item.title} ` +  '<span>' + `${item.price} X ${item.quantity} ` + '<strong class="total">' + `${item.totalPrice}` + '</strong></span>';
+      cell2.style.padding = '10px 0';
+      cell2.style.margin = '0';
+      var cell3 = newRow.insertCell(2);
+      cell3.innerHTML = '<img src="./images/icon-delete.svg" alt="Delete" id="delete-item" />';
+      cell3.style.padding = '10px';
+    
+    
+    }
+    
+    //delete row
+
+    var deleteButton = document.querySelector('#delete-item');
+    console.log(deleteButton);
+
 
 
 
