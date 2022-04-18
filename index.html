@@ -235,10 +235,20 @@
     cart.onclick = function () {
       if (emptyCart.style.display == "block") {
         emptyCart.style.display = "none";
+        
       } else {
         emptyCart.style.display = "block";
+        const deleteButton = document.getElementById('delete-item');
+        console.log(deleteButton);
+        deleteButton.addEventListener('click', deleteItem);
       }
     }
+    function deleteItem(event) {
+      event.target.parentElement.parentElement.remove();    
+    }
+
+
+
 
     // calculate item quantity
     var quantityInCountBox = document.getElementsByClassName("count-box")[0];
@@ -266,15 +276,16 @@
 
     //Add to cart functionality
     const cartContent = document.querySelector(".button-cart");
-    // console.log(cartContent);
-    var shoppingCartContent = document.querySelector('#cart-content tbody');
-    // console.log(shoppingCartContent);
+    // console.log("after del button");
     loadEventListeners();
     function loadEventListeners() {
       cartContent.addEventListener('click', buyItem);
+      
     }
+
     function buyItem(event) {
-      event.preventDefault();if(event.target.classList.contains("button-cart")) {
+      event.preventDefault();
+      if(event.target.classList.contains("button-cart")) {
         const cartElement = document.querySelector('main');
         getItemInfo(cartElement);
       }
@@ -296,12 +307,13 @@
       addToCart(itemInfo);
     }
     
+
     function addToCart(item) {
       var emptyCartContent = document.querySelector('.empty-cart-content');
-      emptyCartContent.style.display = 'none';
       var tableContent = document.querySelector('table');
-      tableContent.style.display = 'block';
       var checkoutButton = document.querySelector("#checkout");
+      emptyCartContent.style.display = 'none';
+      tableContent.style.display = 'block';
       checkoutButton.style.display = 'block';
       var newRow = tableContent.insertRow();
       newRow.style.width = "100%";
@@ -314,17 +326,13 @@
       var cell3 = newRow.insertCell(2);
       cell3.innerHTML = '<img src="./images/icon-delete.svg" alt="Delete" id="delete-item" />';
       cell3.style.padding = '10px';
-    
-    
+      cell3.style.margin = 'auto';  
     }
     
-    //delete row
-
-    var deleteButton = document.querySelector('#delete-item');
-    console.log(deleteButton);
-
-
-
+    
+    
+// add to cart & remove from cart -> cart-operations.js
+//separate files for separate functionalities - js files
 
   </script>
 </html>
